@@ -17,7 +17,7 @@ public class Passenger {
     private String firstName;
     private String lastName;
     private int frequentFlyer;
-    public String createfullName;
+    public String fullName;
 
     @OneToMany(mappedBy = "passenger")
     private List<Ticket> tickets = new ArrayList<>();
@@ -60,7 +60,7 @@ public class Passenger {
         this.frequentFlyer = frequentFlyer;
     }
 
-    public String createfullName () {
+    public String fullName () {
 
         return getFirstName() + " " + getLastName();
     }

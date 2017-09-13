@@ -1,6 +1,7 @@
 package be.vdab.Flights;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.Id;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,4 +55,12 @@ public class PassengerRepository {
     public void save (Passenger p){
         em.persist(p);
     }
+
+    public List<Passenger> findAllPassengers(){
+       TypedQuery<Passenger> q = em.createQuery("select p from Passenger p", Passenger.class);
+       
+       return q.getResultList();
+
+    }
+
 }
