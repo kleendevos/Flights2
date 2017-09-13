@@ -1,9 +1,8 @@
 package be.vdab.Flights;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by vdabcursist on 07/09/2017.
@@ -15,10 +14,13 @@ public class Passenger {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    String firstName;
-    String lastName;
-    int frequentFlyer;
-    public String fullName;
+    private String firstName;
+    private String lastName;
+    private int frequentFlyer;
+    public String createfullName;
+
+    @OneToMany(mappedBy = "passenger")
+    private List<Ticket> tickets = new ArrayList<>();
 
     public Passenger() {
     }
@@ -58,7 +60,8 @@ public class Passenger {
         this.frequentFlyer = frequentFlyer;
     }
 
-    public String fullName () {
+    public String createfullName () {
+
         return getFirstName() + " " + getLastName();
     }
 
@@ -71,4 +74,9 @@ public class Passenger {
                 ", frequentFlyer=" + frequentFlyer +
                 '}';
     }
-}
+
+    public void addticket(Ticket ticket) {
+        tickets.add(ticket);
+        }
+    }
+

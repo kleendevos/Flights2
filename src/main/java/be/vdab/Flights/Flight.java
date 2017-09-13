@@ -1,11 +1,26 @@
 package be.vdab.Flights;
 
+import javax.persistence.*;
+
 /**
  * Created by vdabcursist on 07/09/2017.
  */
+
+@Entity
 public class Flight {
-    Integer id;
-    String number;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column (unique = true, nullable = false)
+    private String number;  //uniek
+
+    @Column (nullable = false)
+    private String departure;  // not null
+    @Column (nullable = false)
+    private String destination;  // not null
+
 
     public Flight() {
     }
@@ -14,20 +29,28 @@ public class Flight {
         this.number = number;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getNumber() {
         return number;
     }
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public String getDeparture() {
+        return departure;
+    }
+
+    public void setDeparture(String departure) {
+        this.departure = departure;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     @Override

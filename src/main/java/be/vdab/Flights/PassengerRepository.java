@@ -3,7 +3,11 @@ package be.vdab.Flights;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Id;
+import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +16,11 @@ import java.util.List;
  * Created by vdabcursist on 12/09/2017.
  */
 @Repository //specifieke vorm van Component
+@Transactional
 public class PassengerRepository {
+
+    @PersistenceContext
+    private EntityManager em;
 
 
     private List<String> passengers = new ArrayList<>();
@@ -29,7 +37,20 @@ public class PassengerRepository {
     }
 
     public Passenger readById (int id) {
-        System.out.println("Passenger Id");
-        return new Passenger();
+        return em.find(Passenger.class,id);
+    }
+
+    public void deleteById (int id) {
+        Passenger p = em.getReference(Passenger.class, id);
+        em.remove(p);
+    }
+
+    public void update (Passenger p) {
+        em.merge(p);
+    }
+
+
+    public void save (Passenger p){
+        em.persist(p);
     }
 }
