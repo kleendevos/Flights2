@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+    <h4>I wish today was a very special day ...</h4>
+    <h4>It's a sad sad planet ... </h4>
+
+
+    <table>
+        <tr th:each="t: ${flightTickets}">
+            <td th:text = "${t.passenger.firstName}"></td>
+            <td th:text = "${t.passenger.lastName}"></td>
+            <td th:text = "${t.price}"></td>
+            <td th:text = "${t.Flight.number}"></td>
+            <td th:text = "${t.Flight.departure}"></td>
+            <td th:text = "${t.Flight.destination}"></td>
+        </tr>
+    </table>
+
+
+
+</body>
+</html>

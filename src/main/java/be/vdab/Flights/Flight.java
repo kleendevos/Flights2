@@ -55,9 +55,12 @@ public class Flight {
 
     @Override
     public String toString() {
-        return "be.vdab.air.Flight{" +
+        return "Flight{" +
                 "id=" + id +
                 ", number='" + number + '\'' +
+                ", departure='" + departure + '\'' +
+                ", destination='" + destination + '\'' +
                 '}';
     }
 }
+

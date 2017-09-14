@@ -21,10 +21,10 @@ public class PassengerService {
 //        System.out.println("Passenger bean wordt nu aangemaakt");
 //    }
 
-    public List<String> getAll() {
-        System.out.println("get all inside  Passenger Service");
-        return pr.findAll();
-    }
+//    public List<String> getAll() {
+//        System.out.println("get all inside  Passenger Service");
+//        return pr.findAll();
+//    }
 
    public Passenger findById (int id){
         System.out.println("Passenger Id");

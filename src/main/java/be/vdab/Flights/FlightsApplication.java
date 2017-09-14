@@ -15,19 +15,29 @@ public class FlightsApplication {
 //		String s = ac.getBean(String.class);
 //		System.out.println(s);
 
-		PassengerService ps = ac.getBean(PassengerService.class);
-		ps.getAll();
-		System.out.println(ps.getAll());
+		//PassengerService ps = ac.getBean(PassengerService.class);
+//		ps.getAll();
+//		System.out.println(ps.getAll());
 
-		ReservationService rs = ac.getBean(ReservationService.class);
+		//ReservationService rs = ac.getBean(ReservationService.class);
 //		rs.bookTicketForFlight(new Passenger("Minnie", "Mouse"),new Flight("SN506"));
 
 		PassengerRepository pr = ac.getBean(PassengerRepository.class);
-		List<Passenger> passengerList = pr.findAllPassengers();
+		List<Passenger> passengerList = pr.findAllByOrderByFirstName();
 		for (Passenger passenger : passengerList) {
-			passenger.getFirstName();
 			System.out.println(passenger.getFirstName());
 		}
+
+		Passenger p = pr.readByFirstNameOrLastName("Erik", "Erikson");
+		System.out.println(p.getFrequentFlyer());
+
+		System.out.println (pr.findAll());
+
+		FlightRepository fr = ac.getBean(FlightRepository.class);
+		System.out.println(fr.readBynumber("SN507"));
+		System.out.println(fr.readBynumber("SN509"));
+		System.out.println(fr.countFlightByDeparture("Brussels"));
+
 
 //		Passenger p = new Passenger("Minnie", "Mouse");
 //		p.setFrequentFlyer(15000);
@@ -45,13 +55,17 @@ public class FlightsApplication {
 		//pr.deleteById(5);
 		//System.out.println(pr.readById(12));
 
-		FlightRepository fr = ac.getBean(FlightRepository.class);
+		//FlightRepository fr = ac.getBean(FlightRepository.class);
 //		Flight f = new Flight("SN511");
 //		f.setDeparture("Brussels");
 //		f.setDestination("Copenhagen");
 //		fr.save(f);
 
 		TicketRepository tr = ac.getBean(TicketRepository.class);
+		System.out.print(tr.findOne(1000));
+
+
+
 //		Ticket t = new Ticket(450);
 //		t.setPassenger(p2);
 //		t.setFlight(f);
