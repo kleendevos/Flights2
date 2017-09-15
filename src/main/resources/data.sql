@@ -5,7 +5,7 @@ insert into passenger (id, first_name, last_name, frequent_flyer) values (4000, 
 insert into passenger (id, first_name, last_name, frequent_flyer) values (5000, 'Christian', 'Christianson', 20000);
 insert into passenger (id, first_name, last_name, frequent_flyer) values (6000, 'Sven', 'Svenson', 20000);
 
-insert into flight (id, number, departure, destination) values (1000, 'SN507', 'Brussels', 'Stockholm');
+insert into flight (id, number, departure, destination) values (1000, 'SN520', 'Brussels', 'Stockholm');
 insert into flight (id, number, departure, destination) values (2000, 'SN509', 'Brussels', 'Oslo');
 insert into flight (id, number, departure, destination) values (3000, 'SN510', 'Brussels', 'Helsinki');
 

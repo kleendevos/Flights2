@@ -1,5 +1,8 @@
 package be.vdab.Flights;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +20,6 @@ public class Passenger {
     private String firstName;
     private String lastName;
     private int frequentFlyer;
-    public String fullName;
 
     @OneToMany(mappedBy = "passenger")
     private List<Ticket> tickets = new ArrayList<>();
@@ -36,6 +38,15 @@ public class Passenger {
         this.lastName = lastName;
     }
 
+    @JsonIgnore
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -44,6 +55,7 @@ public class Passenger {
         this.firstName = firstName;
     }
 
+    @JsonProperty("achternaam")
     public String getLastName() {
         return lastName;
     }
@@ -52,6 +64,7 @@ public class Passenger {
         this.lastName = lastName;
     }
 
+    @JsonIgnore
     public int getFrequentFlyer() {
         return frequentFlyer;
     }
@@ -59,6 +72,7 @@ public class Passenger {
     public void setFrequentFlyer(int frequentFlyer) {
         this.frequentFlyer = frequentFlyer;
     }
+
 
     public String fullName () {
 

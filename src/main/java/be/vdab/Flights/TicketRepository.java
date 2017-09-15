@@ -19,6 +19,7 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 public interface TicketRepository extends JpaRepository <Ticket,Integer>{
 
     Ticket findOne (int id);
+    Ticket delete (int id);
 }
 
 //@Repository

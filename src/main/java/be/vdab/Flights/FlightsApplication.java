@@ -66,6 +66,7 @@ public class FlightsApplication {
 
 
 
+
 //		Ticket t = new Ticket(450);
 //		t.setPassenger(p2);
 //		t.setFlight(f);

@@ -43,7 +43,9 @@ public class Ticket {
 
     public void setPassenger(Passenger passenger) {
         this.passenger = passenger;
-        passenger.addticket(this);
+        if (passenger != null){
+            passenger.addticket(this);
+        }
     }
 
     public Flight getFlight() {
